@@ -12,7 +12,7 @@ void Test1()
     // Start profiling for the entire test
     profiler->EnterSection("Trig Speed Test");
     
-    constexpr int TRIG_TEST_NUM_ENTRIES = 100'000; // Number of entries for testing
+    constexpr int TRIG_TEST_NUM_ENTRIES = 100000; // Number of entries for testing
     float randomYawDegreeTable[TRIG_TEST_NUM_ENTRIES] = {}; // Array to hold random angles
     
     // Enter section for generating random angles
@@ -22,7 +22,7 @@ void Test1()
         randomYawDegreeTable[i] = 360.0f * float(rand()) / float(RAND_MAX); // Fill the array with random angles
     }
     // Exit the angle generation section
-    profiler->ExitSection("Random Angle Generation");
+    profiler->ExitSection("Random Angle Generation", __LINE__, __FILE__, __FUNCTION__);
     
     float biggestSoFar = 0.f; // Variable to track the largest sum of cos and sin values
     
@@ -37,7 +37,7 @@ void Test1()
         float sinDegrees = sinf(yawDegrees * DEGREES_TO_RADIANS); // Compute sine
 
         // Exit the individual computation section
-        profiler->ExitSection("Cos and Sine Compute");
+        profiler->ExitSection("Cos and Sine Compute", __LINE__, __FILE__, __FUNCTION__);
         
         // Update the biggest value found
         if (cosDegrees + sinDegrees > biggestSoFar)
@@ -46,10 +46,10 @@ void Test1()
         }
     }
     // Exit the total computation section
-    profiler->ExitSection("Total Cos and Sin Compute");
+    profiler->ExitSection("Total Cos and Sin Compute", __LINE__, __FILE__, __FUNCTION__);
 
     // Finally, exit the main test section
-    profiler->ExitSection("Trig Speed Test");
+    profiler->ExitSection("Trig Speed Test", __LINE__, __FILE__, __FUNCTION__);
 
     // Output the result to the console
     std::cout << "Biggest cos+sin = " << biggestSoFar << std::endl; 
@@ -58,7 +58,7 @@ void Test1()
 void Test2()
 {
     PROFILER_ENTER("Trig Speed Test");
-    constexpr int TRIG_TEST_NUM_ENTRIES = 100'000;
+    constexpr int TRIG_TEST_NUM_ENTRIES = 100000;
     float randomYawDegreeTable[TRIG_TEST_NUM_ENTRIES] = {};
     
     // Enter section for generating random angles
@@ -146,18 +146,39 @@ void Test2()
     // Output the result
     std::cout << "Biggest cos+sin = " << biggestSoFar << std::endl; 
 }
+void RunInterleavedTest() {
+    // Start profiling for Task A
+    profiler->EnterSection("Task A");
+    
+    // Some operations for Task A
+    for (int i = 0; i < 5; ++i) {
+        profiler->EnterSection("Task B");  // Start Task B
+        // Some operations for Task B
+        profiler->ExitSection("Task B");   // End Task B
+        
+        // Possibly some other operations in Task A
+    }
 
-void RunTest()
-{
-    Test1(); 
+    // Finalize Task A
+    profiler->ExitSection("Task A");
+}
+void RunTest() {
+    RunInterleavedTest(); // Call the interleaved profiling 
+    Test1();
     Test2();
 }
+
 int main(int argc, char** argv)
 {
     profiler = Profiler::GetInstance();
 
     RunTest();
 
+    profiler->printStatsToCSV("profiler_stats.csv"); // Output statistics to a CSV file
+    profiler->printStatsToJSON("profiler_stats.json"); // Output statistics to a JSON file
+    profiler->printStats(); // Print stats to console
+
+    // Clean up
     delete profiler; 
     profiler = nullptr; 
     return 0; 

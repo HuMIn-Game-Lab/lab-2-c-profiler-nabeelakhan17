@@ -1,0 +1,70 @@
+{
+  "sections": [
+    {
+      "sectionName": "Trig Speed Test",
+      "count": 2,
+      "totalTime": 57.5234,
+      "minTime": 27.6334,
+      "maxTime": 29.8899,
+      "averageTime": 28.7617,
+      "fileName": "./Code/main.cpp",
+      "functionName": "Test1",
+      "lineNumber": 52
+    },
+    {
+      "sectionName": "Random Angle Generation",
+      "count": 2,
+      "totalTime": 1.42124,
+      "minTime": 0.578831,
+      "maxTime": 0.842411,
+      "averageTime": 0.710621,
+      "fileName": "./Code/main.cpp",
+      "functionName": "Test1",
+      "lineNumber": 25
+    },
+    {
+      "sectionName": "Total Cos and Sin Compute",
+      "count": 2,
+      "totalTime": 55.9067,
+      "minTime": 26.6064,
+      "maxTime": 29.3003,
+      "averageTime": 27.9533,
+      "fileName": "./Code/main.cpp",
+      "functionName": "Test1",
+      "lineNumber": 49
+    },
+    {
+      "sectionName": "Cos and Sine Compute",
+      "count": 200000,
+      "totalTime": 16.3364,
+      "minTime": 5.3e-05,
+      "maxTime": 0.054997,
+      "averageTime": 8.16819e-05,
+      "fileName": "./Code/main.cpp",
+      "functionName": "Test1",
+      "lineNumber": 40
+    },
+    {
+      "sectionName": "Task A",
+      "count": 1,
+      "totalTime": 0.034206,
+      "minTime": 0.034206,
+      "maxTime": 0.034206,
+      "averageTime": 0.034206,
+      "fileName": "./Code/profiler.cpp",
+      "functionName": "ExitSection",
+      "lineNumber": 123
+    },
+    {
+      "sectionName": "Task B",
+      "count": 5,
+      "totalTime": 0.001018,
+      "minTime": 0.000136,
+      "maxTime": 0.000295,
+      "averageTime": 0.0002036,
+      "fileName": "./Code/profiler.cpp",
+      "functionName": "ExitSection",
+      "lineNumber": 123
+    }
+  ]
+}
