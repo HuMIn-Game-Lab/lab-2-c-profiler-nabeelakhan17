@@ -21,7 +21,17 @@ void RunTest();
 void InsertionSortTest();    // New Insertion Sort Test
 void BinarySearchTest();     // New Binary Search Test
 
-// Existing Test1 Function (Refactored to Use Macros)
+// Existing Test1 Function (Refactored to Use Macros)'
+void startStreamlitServer() {
+    #ifdef _WIN32
+    system("start /B streamlit run Code/combinedGraphs.py");
+
+    #else
+    system("streamlit run Code/combinedGraphs.py");
+
+    #endif
+}
+
 void Test1()
 {
     // Start profiling for the entire test
@@ -283,7 +293,7 @@ void RunTest() {
     // Test1();               // Refactored Test1
     // Test2();               // Existing Test2
     //Test3();               // Refactored Test3
-    for(int i = 0; i< 10; i++)
+    for(int i = 0; i< 2; i++)
     {
         std::cout<<"Run: " << i << std::endl;
         InsertionSortTest();   // New Insertion Sort Test
@@ -317,6 +327,7 @@ int main(int argc, char** argv)
     profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
 
     profiler->printStartAndStopToCSV("Data/detailedStats.csv");
+    startStreamlitServer();
     // profiler->printAllRuns("Data/allruns.csv");
     // Print statistics again to the console (optional)
     // profiler->printStats(); // Print stats to console

@@ -2,25 +2,25 @@
   "sections": [
     {
       "sectionName": "Insertion Sort Test",
-      "count": 10,
-      "totalTime": 110687,
-      "minTime": 10440,
-      "maxTime": 11798.9,
-      "averageTime": 11068.7,
+      "count": 2,
+      "totalTime": 32814.8,
+      "minTime": 16352.6,
+      "maxTime": 16462.2,
+      "averageTime": 16407.4,
       "fileName": "./Code/main.cpp",
       "functionName": "InsertionSortTest",
-      "lineNumber": 210
+      "lineNumber": 222
     },
     {
       "sectionName": "Binary Search Test",
-      "count": 10,
-      "totalTime": 240.956,
-      "minTime": 22.2249,
-      "maxTime": 27.5198,
-      "averageTime": 24.0956,
+      "count": 2,
+      "totalTime": 61.5296,
+      "minTime": 30.0568,
+      "maxTime": 31.4729,
+      "averageTime": 30.7648,
       "fileName": "./Code/main.cpp",
       "functionName": "BinarySearchTest",
-      "lineNumber": 270
+      "lineNumber": 282
     }
   ]
 }
