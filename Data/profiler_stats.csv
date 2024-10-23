@@ -1,0 +1,3 @@
+sectionName,count,totalTime(ms),minTime(ms),maxTime(ms),averageTime(ms),fileName,functionName,lineNumber
+"Insertion Sort Test",10,110687.100246,10439.963221,11798.881298,11068.710025,"./Code/main.cpp","InsertionSortTest",210
+"Binary Search Test",10,240.956275,22.224868,27.519822,24.095627,"./Code/main.cpp","BinarySearchTest",270

@@ -18,7 +18,6 @@ class TimeRecordStart{
     public: 
         TimeRecordStart(char const* sectionName, double secondsAtStart);
         ~TimeRecordStart();
-
         char const* sectionName; 
         double secondsAtStart; 
 
@@ -27,7 +26,7 @@ class TimeRecordStart{
 
 class TimeRecordStop{
     public: 
-        TimeRecordStop(char const* sectionName, double secondsAtStop, int lineNumber, const char* fileName, const char* functionName);
+        TimeRecordStop(char const* sectionName, double elapsedTime,  int lineNumber, const char* fileName, const char* functionName);
         TimeRecordStop(char const* sectionName, double secondsAtStop);
         ~TimeRecordStop();
 
@@ -37,6 +36,7 @@ class TimeRecordStop{
         int lineNumber; 
         const char* fileName; 
         const char* functionName; 
+        
 
 };
 
@@ -50,7 +50,8 @@ public:
     double avgTime;              // Average time taken per call
     const char* fileName;        // Name of the file where the section is defined
     const char* functionName;    // Name of the function where the section is defined
-    int lineNumber;              // Line number where the section begins
+    int lineNumber;     
+          // Line number where the section begins
 
     // Constructor that initializes all fields
     ProfilerStats(const char* name, const char* file, const char* function, int line)
@@ -75,14 +76,17 @@ class Profiler{
         void printStats();
         void printStatsToCSV(const char* fileName);
         void printStatsToJSON(const char* fileName);
+        void printStartAndStopToCSV(const char* fileName);
+        void printAllRuns(const char* fileName);
+
 
         static Profiler* gProfiler;
         static Profiler* GetInstance();
 
 
     private: 
-        void ReportSectionTime(char const* sectionName, double elapsedTime);
-        void ReportSectionTime(char const* sectionName, double elapsedTime, int lineNumber, const char* fileName, const char* functionName );
+        void ReportSectionTime(char const* sectionName,double elapsedTime);
+        void ReportSectionTime(char const* sectionName, double elapsedTime,  int lineNumber, const char* fileName, const char* functionName );
         std::map<char const*, ProfilerStats*> stats; 
         std::vector<TimeRecordStart> startTimes; 
         std::vector<TimeRecordStop> elapsedTimes; 

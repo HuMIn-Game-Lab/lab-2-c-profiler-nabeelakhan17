@@ -1,0 +1,26 @@
+{
+  "sections": [
+    {
+      "sectionName": "Insertion Sort Test",
+      "count": 10,
+      "totalTime": 110687,
+      "minTime": 10440,
+      "maxTime": 11798.9,
+      "averageTime": 11068.7,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest",
+      "lineNumber": 210
+    },
+    {
+      "sectionName": "Binary Search Test",
+      "count": 10,
+      "totalTime": 240.956,
+      "minTime": 22.2249,
+      "maxTime": 27.5198,
+      "averageTime": 24.0956,
+      "fileName": "./Code/main.cpp",
+      "functionName": "BinarySearchTest",
+      "lineNumber": 270
+    }
+  ]
+}
