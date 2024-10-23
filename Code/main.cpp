@@ -236,6 +236,63 @@ void InsertionSortTest() {
     }
 }
 
+//interleaved Insertion Sort: 
+void InsertionSortTest2() {
+    PROFILER_ENTER("Insertion Sort Test");
+
+    constexpr int SORT_TEST_SIZE = 10;  // Size of the array to sort
+    std::vector<int> data(SORT_TEST_SIZE);
+
+    // Populate the array with random numbers
+    PROFILER_ENTER("Random Number Generation");
+    for (auto &num : data) {
+        num = rand();
+    }
+    PROFILER_EXIT("Random Number Generation");
+
+    // Perform Insertion Sort
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        PROFILER_ENTER("Outer Loop");  // Start profiling the outer loop
+
+        int key = data[i];
+        int j = i - 1;
+
+        // Interleaving the shifting process (Inner loop)
+        while (j >= 0 && data[j] > key) {
+            PROFILER_ENTER("Inner Loop (Shifting Elements)");  // Start profiling inner loop
+
+            data[j + 1] = data[j];  // Shift element
+
+            PROFILER_EXIT("Inner Loop (Shifting Elements)");   // End profiling inner loop
+            --j;
+        }
+
+        // Place the key in its correct position
+        PROFILER_ENTER("Key Assignment");
+        data[j + 1] = key;
+        PROFILER_EXIT("Key Assignment");
+
+        PROFILER_EXIT("Outer Loop");  // End profiling the outer loop
+    }
+
+    PROFILER_EXIT("Insertion Sort Test");
+
+    // Verify sorting
+    bool sorted = true;
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        if (data[i - 1] > data[i]) {
+            sorted = false;
+            break;
+        }
+    }
+
+    if (sorted) {
+        std::cout << "Insertion Sort successfully sorted the array." << std::endl;
+    } else {
+        std::cout << "Insertion Sort failed to sort the array." << std::endl;
+    }
+}
+
 // New Binary Search Test Function
 void BinarySearchTest() {
     PROFILER_ENTER("Binary Search Test");
@@ -293,13 +350,13 @@ void RunTest() {
     // Test1();               // Refactored Test1
     // Test2();               // Existing Test2
     //Test3();               // Refactored Test3
-    for(int i = 0; i< 2; i++)
-    {
-        std::cout<<"Run: " << i << std::endl;
-        InsertionSortTest();   // New Insertion Sort Test
-        BinarySearchTest(); 
-    }
+    // for(int i = 0; i< 2; i++)
+    // {
+    //     std::cout<<"Run: " << i << std::endl;
+    //     InsertionSortTest2();   // New Insertion Sort Test
+    // }
        // New Binary Search Test
+       InsertionSortTest2();
 }
 
 int main(int argc, char** argv)
@@ -315,22 +372,19 @@ int main(int argc, char** argv)
     RunTest();
 
     // Calculate statistics based on recorded profiling data
-    profiler->calculateStats();
+     profiler->calculateStats();
 
-    // Print statistics to the console
-    profiler->printStats();
+     // Print statistics to the console
+     profiler->printStats();
 
     // Output statistics to a CSV file
-    profiler->printStatsToCSV("Data/profiler_stats.csv"); // Ensure the 'Data' directory exists
+     profiler->printStatsToCSV("Data/profiler_stats.csv"); // Ensure the 'Data' directory exists
 
     // Output statistics to a JSON file
-    profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
+     profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
 
     profiler->printStartAndStopToCSV("Data/detailedStats.csv");
     startStreamlitServer();
-    // profiler->printAllRuns("Data/allruns.csv");
-    // Print statistics again to the console (optional)
-    // profiler->printStats(); // Print stats to console
 
     // Clean up
     // If Profiler uses a Singleton with a static instance, **do not** delete it manually
