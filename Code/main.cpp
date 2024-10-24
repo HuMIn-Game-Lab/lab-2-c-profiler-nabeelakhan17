@@ -18,7 +18,8 @@ void Test2();
 void Test3();
 void RunInterleavedTest();
 void RunTest();
-void InsertionSortTest();    // New Insertion Sort Test
+void InsertionSortTest(); 
+void InsertionSortTest2();   // New Insertion Sort Test
 void BinarySearchTest();     // New Binary Search Test
 
 // Existing Test1 Function (Refactored to Use Macros)'
@@ -32,6 +33,7 @@ void startStreamlitServer() {
     #endif
 }
 
+/*
 void Test1()
 {
     // Start profiling for the entire test
@@ -235,20 +237,32 @@ void InsertionSortTest() {
         std::cout << "Insertion Sort failed to sort the array." << std::endl;
     }
 }
-
+*/
 //interleaved Insertion Sort: 
-void InsertionSortTest2() {
+   void InsertionSortTest2() {
     PROFILER_ENTER("Insertion Sort Test");
 
-    constexpr int SORT_TEST_SIZE = 10;  // Size of the array to sort
-    std::vector<int> data(SORT_TEST_SIZE);
+    constexpr int SORT_TEST_SIZE = 100;  // Size of the array to sort
+       std::vector<int> data = {
+        857,  23,  546,  19,  678,  345,  789,  12,  456,  89,
+        234,  567,  90,  123,  456,  789,  234,  56,  789,  123,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12
+    };
 
-    // Populate the array with random numbers
-    PROFILER_ENTER("Random Number Generation");
-    for (auto &num : data) {
-        num = rand();
-    }
-    PROFILER_EXIT("Random Number Generation");
+
+    // // Populate the array with random numbers
+    // PROFILER_ENTER("Random Number Generation");
+    // for (auto &num : data) {
+    //     num = rand();
+    // }
+    // PROFILER_EXIT("Random Number Generation");
 
     // Perform Insertion Sort
     for (int i = 1; i < SORT_TEST_SIZE; ++i) {
@@ -294,7 +308,7 @@ void InsertionSortTest2() {
 }
 
 // New Binary Search Test Function
-void BinarySearchTest() {
+/*void BinarySearchTest() {
     PROFILER_ENTER("Binary Search Test");
 
     constexpr int SEARCH_TEST_SIZE = 100000; // Size of the array to search
@@ -316,6 +330,39 @@ void BinarySearchTest() {
 
     // Perform Binary Search
     int left = 0;
+   void InsertionSortTest2() {
+    PROFILER_ENTER("Insertion Sort Test");
+
+    constexpr int SORT_TEST_SIZE = 100000;  // Size of the array to sort
+    std::vector<int> data(SORT_TEST_SIZE);
+
+    // Populate the array with random numbers
+    PROFILER_ENTER("Random Number Generation");
+    for (auto &num : data) {
+        num = rand();
+    }
+    PROFILER_EXIT("Random Number Generation");
+
+    // Perform Insertion Sort
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        PROFILER_ENTER("Outer Loop");  // Start profiling the outer loop
+
+        int key = data[i];
+        int j = i - 1;
+
+        // Interleaving the shifting process (Inner loop)
+        while (j >= 0 && data[j] > key) {
+            PROFILER_ENTER("Inner Loop (Shifting Elements)");  // Start profiling inner loop
+
+            data[j + 1] = data[j];  // Shift element
+
+            PROFILER_EXIT("Inner Loop (Shifting Elements)");   // End profiling inner loop
+            --j;
+        }
+
+        // Place the key in its correct position
+        PROFILER_ENTER("Key Assignment");
+        data[j + 1] = key;
     int right = SEARCH_TEST_SIZE -1;
     int foundIndex = -1;
 
@@ -343,6 +390,194 @@ void BinarySearchTest() {
         std::cout << "Binary Search: Element " << target << " not found in the array." << std::endl;
     }
 }
+*/
+
+// void InsertionSortTest2_Modified() {
+//     PROFILER_ENTER("Insertion Sort Test");
+
+//     constexpr int SORT_TEST_SIZE = 1000;  // Size of the array to sort
+//     std::vector<int> data(SORT_TEST_SIZE);
+
+//     // Populate the array with random numbers
+//     PROFILER_ENTER("Random Number Generation");
+//     for (auto &num : data) {
+//         num = rand();
+//     }
+//     PROFILER_EXIT("Random Number Generation");
+
+//     // Perform Insertion Sort with Binary Search
+//     for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+//         PROFILER_ENTER("Outer Loop");  // Start profiling the outer loop
+
+//         int key = data[i];
+//         // Find the insertion point using binary search
+//         auto it = std::upper_bound(data.begin(), data.begin() + i, key);
+//         int j = std::distance(data.begin(), it) - 1;
+
+//         // Shift elements to make space for the key
+//         PROFILER_ENTER("Shifting Elements");
+//         while (j >= 0 && data[j] > key) {
+//             data[j + 1] = data[j];
+//             --j;
+//         }
+//         PROFILER_EXIT("Shifting Elements");
+
+//         // Place the key in its correct position
+//         PROFILER_ENTER("Key Assignment");
+//         data[j + 1] = key;
+//         PROFILER_EXIT("Key Assignment");
+
+//         PROFILER_EXIT("Outer Loop");  // End profiling the outer loop
+//     }
+
+//     PROFILER_EXIT("Insertion Sort Test");
+
+//     // Verify sorting
+//     bool sorted = true;
+//     for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+//         if (data[i - 1] > data[i]) {
+//             sorted = false;
+//             break;
+//         }
+//     }
+
+//     if (sorted) {
+//         std::cout << "Insertion Sort successfully sorted the array." << std::endl;
+//     } else {
+//         std::cout << "Insertion Sort failed to sort the array." << std::endl;
+//     }
+// }
+void InsertionSortTest2_Modified() {
+    PROFILER_ENTER("Insertion Sort Test");
+
+    constexpr int SORT_TEST_SIZE = 100;  // Reduced size for testing
+       std::vector<int> data = {
+        857,  23,  546,  19,  678,  345,  789,  12,  456,  89,
+        234,  567,  90,  123,  456,  789,  234,  56,  789,  123,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12
+    };
+
+
+    // Populate the array with random numbers
+    // PROFILER_ENTER("Random Number Generation");
+    // for (auto &num : data) {
+    //     num = rand();
+    // }
+    // PROFILER_EXIT("Random Number Generation");
+
+    // Perform Insertion Sort
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        PROFILER_ENTER("Outer Loop");  // Start profiling the outer loop
+
+        int key = data[i];
+        int j = i - 1;
+
+        // Shift elements to make space for the key without profiling each shift
+        while (j >= 0 && data[j] > key) {
+            PROFILER_ENTER("Inner Loop (Shifting Elements)");  // Start profiling inner loop
+
+            data[j + 1] = data[j];  // Shift element
+
+            PROFILER_EXIT("Inner Loop (Shifting Elements)");   // End profiling inner loop
+            --j;
+        }
+
+        // Place the key in its correct position
+        PROFILER_ENTER("Key Assignment");
+        data[j + 1] = key;
+        PROFILER_EXIT("Key Assignment");
+
+        PROFILER_EXIT("Outer Loop");  // End profiling the outer loop
+    }
+
+    PROFILER_EXIT("Insertion Sort Test");
+
+    // Verify sorting
+    bool sorted = true;
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        if (data[i -1] > data[i]) {
+            sorted = false;
+            break;
+        }
+    }
+
+    if (sorted) {
+        std::cout << "Insertion Sort successfully sorted the array." << std::endl;
+    }
+    else {
+        std::cout << "Insertion Sort failed to sort the array." << std::endl;
+    }
+}
+
+void InsertionSortTest2_Optimized() {
+    PROFILER_ENTER("Insertion Sort Test");
+
+    constexpr int SORT_TEST_SIZE = 100;  // Fixed dataset size
+    std::vector<int> data = {
+        857,  23,  546,  19,  678,  345,  789,  12,  456,  89,
+        234,  567,  90,  123,  456,  789,  234,  56,  789,  123,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12
+    };
+
+    PROFILER_ENTER("Insertion Sort Execution");
+
+    // Perform Insertion Sort with Aggregated Profiling
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        PROFILER_ENTER("Outer Loop");  // Start profiling the outer loop
+
+        int key = data[i];
+        int j = i - 1;
+
+        // Aggregate profiling for the entire shifting process
+        PROFILER_ENTER("Shifting Elements");
+        while (j >= 0 && data[j] > key) {
+            data[j + 1] = data[j];  // Shift element
+            --j;
+        }
+        PROFILER_EXIT("Shifting Elements");
+
+        // Place the key in its correct position
+        PROFILER_ENTER("Key Assignment");
+        data[j + 1] = key;
+        PROFILER_EXIT("Key Assignment");
+
+        PROFILER_EXIT("Outer Loop");  // End profiling the outer loop
+    }
+
+    PROFILER_EXIT("Insertion Sort Execution");
+
+    PROFILER_EXIT("Insertion Sort Test");
+
+    // Verify sorting
+    bool sorted = true;
+    for (int i = 1; i < SORT_TEST_SIZE; ++i) {
+        if (data[i - 1] > data[i]) {
+            sorted = false;
+            break;
+        }
+    }
+
+    if (sorted) {
+        std::cout << "Insertion Sort successfully sorted the array." << std::endl;
+    }
+    else {
+        std::cout << "Insertion Sort failed to sort the array." << std::endl;
+    }
+}
 
 // Updated RunTest Function to Include New Tests
 void RunTest() {
@@ -356,7 +591,10 @@ void RunTest() {
     //     InsertionSortTest2();   // New Insertion Sort Test
     // }
        // New Binary Search Test
-       InsertionSortTest2();
+      // InsertionSortTest2();
+       //InsertionSortTest2_Modified();
+       //InsertionSortTest2_Modified();
+       InsertionSortTest2_Optimized
 }
 
 int main(int argc, char** argv)
@@ -371,23 +609,23 @@ int main(int argc, char** argv)
     // Run all tests
     RunTest();
 
-    // Calculate statistics based on recorded profiling data
+    // // Calculate statistics based on recorded profiling data
      profiler->calculateStats();
 
      // Print statistics to the console
      profiler->printStats();
 
     // Output statistics to a CSV file
-     profiler->printStatsToCSV("Data/profiler_stats.csv"); // Ensure the 'Data' directory exists
+    //  profiler->printStatsToCSV("Data/profiler_stats.csv"); // Ensure the 'Data' directory exists
 
-    // Output statistics to a JSON file
-     profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
+    // // Output statistics to a JSON file
+    //  profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
 
-    profiler->printStartAndStopToCSV("Data/detailedStats.csv");
-    startStreamlitServer();
+    // profiler->printStartAndStopToCSV("Data/detailedStats.csv");
+    // startStreamlitServer();
 
-    // Clean up
-    // If Profiler uses a Singleton with a static instance, **do not** delete it manually
+    // // Clean up
+    // // If Profiler uses a Singleton with a static instance, **do not** delete it manually
     delete profiler; 
     // profiler = nullptr; 
     return 0; 
