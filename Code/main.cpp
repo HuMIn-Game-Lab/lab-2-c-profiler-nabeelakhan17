@@ -6,6 +6,8 @@
 #include <cmath>
 #include <vector>      // For std::vector
 #include <algorithm>   // For std::sort
+#include <thread>   // For std::this_thread::sleep_for
+#include <chrono>   // For std::chrono::seconds
 
 // Initialize the global profiler pointer
 Profiler* profiler = nullptr; 
@@ -25,13 +27,36 @@ void BinarySearchTest();     // New Binary Search Test
 // Existing Test1 Function (Refactored to Use Macros)'
 void startStreamlitServer() {
     #ifdef _WIN32
+    // Start Streamlit in the background and wait for it to start
     system("start /B streamlit run Code/combinedGraphs.py");
+    std::this_thread::sleep_for(std::chrono::seconds(5));  // Increased wait time for server to start
 
-    #else
-    system("streamlit run Code/combinedGraphs.py");
+    // Open the Streamlit app in the default browser
+    system("start http://localhost:8501");
+
+    #elif __APPLE__
+    // For macOS, run Streamlit and open the browser
+    system("streamlit run Code/combinedGraphs.py &");
+    std::this_thread::sleep_for(std::chrono::seconds(5));  // Increased wait time
+    system("open http://localhost:8501");
+
+    #else // For Linux or other OS
+    // For Linux, run Streamlit and open the browser
+    system("streamlit run Code/combinedGraphs.py &");
+    std::this_thread::sleep_for(std::chrono::seconds(5));  // Increased wait time
+    system("xdg-open http://localhost:8501");
 
     #endif
 }
+
+void stopStreamlitServer() {
+    #ifdef _WIN32
+    system("taskkill /F /IM python.exe > nul 2>&1");
+    #else
+    system("pkill -f 'streamlit' > /dev/null 2>&1");
+    #endif
+}
+
 
 void RunInterleavedTest() {
     // Start profiling for Task A
@@ -323,8 +348,14 @@ int main(int argc, char** argv)
     profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
 
     profiler->printStartAndStopToCSV("Data/detailedStats.csv");
-    
+
+    std::cout<<"Starting the stream lit server..."<< std::endl; 
+
     startStreamlitServer();
+
+    std::cout<<"Stopping the server..."<<std::endl; 
+    
+    //stopStreamlitServer();
 
     // // Clean up
     // // If Profiler uses a Singleton with a static instance, **do not** delete it manually
