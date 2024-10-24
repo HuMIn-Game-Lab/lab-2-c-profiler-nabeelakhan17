@@ -1,13 +1,17 @@
 sectionName,count,totalTime(ms),minTime(ms),maxTime(ms),averageTime(ms),fileName,functionName,lineNumber
-"Insertion Sort Test1",1,1.107732,1.107732,1.107732,1.107732,"./Code/main.cpp","InsertionSortTest2",172
-"Outer Loop1",99,1.061233,0.000467,0.051944,0.010720,"./Code/main.cpp","InsertionSortTest2",169
-"Inner Loop (Shifting Elements)1",2186,0.207191,0.000088,0.000257,0.000095,"./Code/main.cpp","InsertionSortTest2",160
-"Key Assignment1",99,0.009319,0.000087,0.000132,0.000094,"./Code/main.cpp","InsertionSortTest2",167
-"Insertion Sort Test2",1,1.193973,1.193973,1.193973,1.193973,"./Code/main.cpp","InsertionSortTest2_Modified",240
-"Outer Loop2",99,1.148825,0.000387,0.059931,0.011604,"./Code/main.cpp","InsertionSortTest2_Modified",237
-"Inner Loop (Shifting Elements)2",2186,0.221877,0.000071,0.000853,0.000101,"./Code/main.cpp","InsertionSortTest2_Modified",228
-"Key Assignment2",99,0.009754,0.000074,0.000177,0.000099,"./Code/main.cpp","InsertionSortTest2_Modified",235
-"Insertion Sort Test (Optimized)3",1,0.153125,0.153125,0.153125,0.153125,"./Code/main.cpp","InsertionSortTest2_Optimized",299
-"Outer Loop (Optimized)3",99,0.120196,0.000842,0.012389,0.001214,"./Code/main.cpp","InsertionSortTest2_Optimized",296
-"Shifting Elements (Optimized)3",99,0.015386,0.000107,0.000746,0.000155,"./Code/main.cpp","InsertionSortTest2_Optimized",289
-"Key Assignment (Optimized)3",99,0.009116,0.000071,0.000158,0.000092,"./Code/main.cpp","InsertionSortTest2_Optimized",294
+"Insertion Sort Test1",1,1.072582,1.072582,1.072582,1.072582,"./Code/main.cpp","InsertionSortTest2",173
+"Outer Loop1",99,1.039747,0.000382,0.043316,0.010502,"./Code/main.cpp","InsertionSortTest2",170
+"Inner Loop (Shifting Elements)1",2186,0.221721,0.000071,0.036666,0.000101,"./Code/main.cpp","InsertionSortTest2",161
+"Key Assignment1",99,0.009149,0.000071,0.000301,0.000092,"./Code/main.cpp","InsertionSortTest2",168
+"Insertion Sort Test2",1,0.920996,0.920996,0.920996,0.920996,"./Code/main.cpp","InsertionSortTest2_Modified",241
+"Outer Loop2",99,0.895899,0.000344,0.133117,0.009049,"./Code/main.cpp","InsertionSortTest2_Modified",238
+"Inner Loop (Shifting Elements)2",2186,0.163228,0.000064,0.000197,0.000075,"./Code/main.cpp","InsertionSortTest2_Modified",229
+"Key Assignment2",99,0.007526,0.000065,0.000108,0.000076,"./Code/main.cpp","InsertionSortTest2_Modified",236
+"Insertion Sort Test (Optimized)3",1,0.120136,0.120136,0.120136,0.120136,"./Code/main.cpp","InsertionSortTest2_Optimized",300
+"Outer Loop (Optimized)3",99,0.093344,0.000783,0.002427,0.000943,"./Code/main.cpp","InsertionSortTest2_Optimized",297
+"Shifting Elements (Optimized)3",99,0.012856,0.000105,0.000260,0.000130,"./Code/main.cpp","InsertionSortTest2_Optimized",290
+"Key Assignment (Optimized)3",99,0.008171,0.000067,0.000789,0.000083,"./Code/main.cpp","InsertionSortTest2_Optimized",295
+"Insertion Sort Test (Linked List)4",1,0.960121,0.960121,0.960121,0.960121,"./Code/main.cpp","InsertionSortLinkedList",358
+"Outer Loop4",99,0.934138,0.000395,0.037899,0.009436,"./Code/main.cpp","InsertionSortLinkedList",355
+"Inner Loop (Shifting Elements)4",2186,0.217962,0.000077,0.014541,0.000100,"./Code/main.cpp","InsertionSortLinkedList",347
+"Key Assignment4",99,0.008057,0.000071,0.000159,0.000081,"./Code/main.cpp","InsertionSortLinkedList",353

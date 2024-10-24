@@ -8,6 +8,7 @@
 #include <algorithm>   // For std::sort
 #include <thread>   // For std::this_thread::sleep_for
 #include <chrono>   // For std::chrono::seconds
+#include <list>
 
 // Initialize the global profiler pointer
 Profiler* profiler = nullptr; 
@@ -313,7 +314,66 @@ void InsertionSortTest2_Optimized() {
         std::cout << "Optimized Insertion Sort failed to sort the array." << std::endl;
     }
 }
+void InsertionSortLinkedList() {
+    PROFILER_ENTER("Insertion Sort Test (Linked List)4");
 
+    constexpr int SORT_TEST_SIZE = 100;  // Reduced size for testing
+       std::vector<int> data = {
+        857,  23,  546,  19,  678,  345,  789,  12,  456,  89,
+        234,  567,  90,  123,  456,  789,  234,  56,  789,  123,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12,
+        345,  678,  90,  234,  567,  890,  123,  456,  789,  12
+    };
+    // Perform Insertion Sort on linked list
+    for (auto it = std::next(data.begin()); it != data.end(); ++it) {
+        PROFILER_ENTER("Outer Loop4");  // Start profiling the outer loop
+
+        int key = *it;
+        auto j = it;
+
+        // Shift elements in the list to make space for the key
+        while (j != data.begin() && *std::prev(j) > key) {
+            PROFILER_ENTER("Inner Loop (Shifting Elements)4");  // Start profiling inner loop
+
+            *j = *std::prev(j);  // Shift element
+            --j;
+
+            PROFILER_EXIT("Inner Loop (Shifting Elements)4");   // End profiling inner loop
+        }
+
+        // Place the key in its correct position
+        PROFILER_ENTER("Key Assignment4");
+        *j = key;
+        PROFILER_EXIT("Key Assignment4");
+
+        PROFILER_EXIT("Outer Loop4");  // End profiling the outer loop
+    }
+
+    PROFILER_EXIT("Insertion Sort Test (Linked List)4");
+
+    // Verify sorting
+    bool sorted = true;
+    auto prev = data.begin();
+    for (auto it = std::next(data.begin()); it != data.end(); ++it) {
+        if (*prev > *it) {
+            sorted = false;
+            break;
+        }
+        prev = it;
+    }
+
+    if (sorted) {
+        std::cout << "Insertion Sort successfully sorted the list." << std::endl;
+    } else {
+        std::cout << "Insertion Sort failed to sort the list." << std::endl;
+    }
+}
 // Updated RunTest Function to Include New Tests
 void RunTest() {
     // RunInterleavedTest(); // Existing interleaved profiling
@@ -321,6 +381,7 @@ void RunTest() {
       InsertionSortTest2();
       InsertionSortTest2_Modified();
       InsertionSortTest2_Optimized();
+      InsertionSortLinkedList();
 }
 
 int main(int argc, char** argv)
