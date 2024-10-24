@@ -311,19 +311,20 @@ int main(int argc, char** argv)
     RunTest();
 
     // // Calculate statistics based on recorded profiling data
-     profiler->calculateStats();
+    profiler->calculateStats();
 
      // Print statistics to the console
-     profiler->printStats();
+    profiler->printStats();
 
     // Output statistics to a CSV file
-    //  profiler->printStatsToCSV("Data/profiler_stats.csv"); // Ensure the 'Data' directory exists
+    profiler->printStatsToCSV("Data/profiler_stats.csv"); // Ensure the 'Data' directory exists
 
-    // // Output statistics to a JSON file
-    //  profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
+    // Output statistics to a JSON file
+    profiler->printStatsToJSON("Data/profiler_stats.json"); // Ensure the 'Data' directory exists
 
-    // profiler->printStartAndStopToCSV("Data/detailedStats.csv");
-    // startStreamlitServer();
+    profiler->printStartAndStopToCSV("Data/detailedStats.csv");
+    
+    startStreamlitServer();
 
     // // Clean up
     // // If Profiler uses a Singleton with a static instance, **do not** delete it manually
