@@ -1,26 +1,136 @@
 {
   "sections": [
     {
-      "sectionName": "Insertion Sort Test",
-      "count": 2,
-      "totalTime": 32814.8,
-      "minTime": 16352.6,
-      "maxTime": 16462.2,
-      "averageTime": 16407.4,
+      "sectionName": "Insertion Sort Test1",
+      "count": 1,
+      "totalTime": 1.10773,
+      "minTime": 1.10773,
+      "maxTime": 1.10773,
+      "averageTime": 1.10773,
       "fileName": "./Code/main.cpp",
-      "functionName": "InsertionSortTest",
-      "lineNumber": 222
+      "functionName": "InsertionSortTest2",
+      "lineNumber": 172
     },
     {
-      "sectionName": "Binary Search Test",
-      "count": 2,
-      "totalTime": 61.5296,
-      "minTime": 30.0568,
-      "maxTime": 31.4729,
-      "averageTime": 30.7648,
+      "sectionName": "Outer Loop1",
+      "count": 99,
+      "totalTime": 1.06123,
+      "minTime": 0.000467,
+      "maxTime": 0.051944,
+      "averageTime": 0.0107195,
       "fileName": "./Code/main.cpp",
-      "functionName": "BinarySearchTest",
-      "lineNumber": 282
+      "functionName": "InsertionSortTest2",
+      "lineNumber": 169
+    },
+    {
+      "sectionName": "Inner Loop (Shifting Elements)1",
+      "count": 2186,
+      "totalTime": 0.207191,
+      "minTime": 8.8e-05,
+      "maxTime": 0.000257,
+      "averageTime": 9.47809e-05,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2",
+      "lineNumber": 160
+    },
+    {
+      "sectionName": "Key Assignment1",
+      "count": 99,
+      "totalTime": 0.009319,
+      "minTime": 8.7e-05,
+      "maxTime": 0.000132,
+      "averageTime": 9.41313e-05,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2",
+      "lineNumber": 167
+    },
+    {
+      "sectionName": "Insertion Sort Test2",
+      "count": 1,
+      "totalTime": 1.19397,
+      "minTime": 1.19397,
+      "maxTime": 1.19397,
+      "averageTime": 1.19397,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Modified",
+      "lineNumber": 240
+    },
+    {
+      "sectionName": "Outer Loop2",
+      "count": 99,
+      "totalTime": 1.14882,
+      "minTime": 0.000387,
+      "maxTime": 0.059931,
+      "averageTime": 0.0116043,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Modified",
+      "lineNumber": 237
+    },
+    {
+      "sectionName": "Inner Loop (Shifting Elements)2",
+      "count": 2186,
+      "totalTime": 0.221877,
+      "minTime": 7.1e-05,
+      "maxTime": 0.000853,
+      "averageTime": 0.000101499,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Modified",
+      "lineNumber": 228
+    },
+    {
+      "sectionName": "Key Assignment2",
+      "count": 99,
+      "totalTime": 0.009754,
+      "minTime": 7.4e-05,
+      "maxTime": 0.000177,
+      "averageTime": 9.85253e-05,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Modified",
+      "lineNumber": 235
+    },
+    {
+      "sectionName": "Insertion Sort Test (Optimized)3",
+      "count": 1,
+      "totalTime": 0.153125,
+      "minTime": 0.153125,
+      "maxTime": 0.153125,
+      "averageTime": 0.153125,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Optimized",
+      "lineNumber": 299
+    },
+    {
+      "sectionName": "Outer Loop (Optimized)3",
+      "count": 99,
+      "totalTime": 0.120196,
+      "minTime": 0.000842,
+      "maxTime": 0.012389,
+      "averageTime": 0.0012141,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Optimized",
+      "lineNumber": 296
+    },
+    {
+      "sectionName": "Shifting Elements (Optimized)3",
+      "count": 99,
+      "totalTime": 0.015386,
+      "minTime": 0.000107,
+      "maxTime": 0.000746,
+      "averageTime": 0.000155414,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Optimized",
+      "lineNumber": 289
+    },
+    {
+      "sectionName": "Key Assignment (Optimized)3",
+      "count": 99,
+      "totalTime": 0.009116,
+      "minTime": 7.1e-05,
+      "maxTime": 0.000158,
+      "averageTime": 9.20808e-05,
+      "fileName": "./Code/main.cpp",
+      "functionName": "InsertionSortTest2_Optimized",
+      "lineNumber": 294
     }
   ]
 }

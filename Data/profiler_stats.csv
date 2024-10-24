@@ -1,3 +1,13 @@
 sectionName,count,totalTime(ms),minTime(ms),maxTime(ms),averageTime(ms),fileName,functionName,lineNumber
-"Insertion Sort Test",2,32814.813074,16352.596077,16462.216997,16407.406537,"./Code/main.cpp","InsertionSortTest",222
-"Binary Search Test",2,61.529637,30.056771,31.472866,30.764818,"./Code/main.cpp","BinarySearchTest",282
+"Insertion Sort Test1",1,1.107732,1.107732,1.107732,1.107732,"./Code/main.cpp","InsertionSortTest2",172
+"Outer Loop1",99,1.061233,0.000467,0.051944,0.010720,"./Code/main.cpp","InsertionSortTest2",169
+"Inner Loop (Shifting Elements)1",2186,0.207191,0.000088,0.000257,0.000095,"./Code/main.cpp","InsertionSortTest2",160
+"Key Assignment1",99,0.009319,0.000087,0.000132,0.000094,"./Code/main.cpp","InsertionSortTest2",167
+"Insertion Sort Test2",1,1.193973,1.193973,1.193973,1.193973,"./Code/main.cpp","InsertionSortTest2_Modified",240
+"Outer Loop2",99,1.148825,0.000387,0.059931,0.011604,"./Code/main.cpp","InsertionSortTest2_Modified",237
+"Inner Loop (Shifting Elements)2",2186,0.221877,0.000071,0.000853,0.000101,"./Code/main.cpp","InsertionSortTest2_Modified",228
+"Key Assignment2",99,0.009754,0.000074,0.000177,0.000099,"./Code/main.cpp","InsertionSortTest2_Modified",235
+"Insertion Sort Test (Optimized)3",1,0.153125,0.153125,0.153125,0.153125,"./Code/main.cpp","InsertionSortTest2_Optimized",299
+"Outer Loop (Optimized)3",99,0.120196,0.000842,0.012389,0.001214,"./Code/main.cpp","InsertionSortTest2_Optimized",296
+"Shifting Elements (Optimized)3",99,0.015386,0.000107,0.000746,0.000155,"./Code/main.cpp","InsertionSortTest2_Optimized",289
+"Key Assignment (Optimized)3",99,0.009116,0.000071,0.000158,0.000092,"./Code/main.cpp","InsertionSortTest2_Optimized",294
